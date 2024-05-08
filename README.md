@@ -34,15 +34,50 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+```
+Step 1: Open Quartus II in your laptop.
+Step 2: Write code to implement SR flipflop using verilog and validating their functionality using their functional tables.
+Step 3: Run compilation to check for errors.
+Step 4: Open waveform output and load input values.
+Step 5: Run simulation to get the output.
+Step 6: Open in RTL viewers to get RTL diagram output.
+```
+
 
 **PROGRAM**
+```
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+Program for flipflops and verify its truth table in quartus using Verilog programming.
+Developed by: SRINIDHI SENTHIL
+RegisterNumber: 212222230148
+
+module SRFLIPFLOPUSINGCASE(q, q_bar, s,r, clk, reset);//SR Flip Flop Behavioral Level using ‘case’ 
+ input s,r,clk, reset;
+ output reg q;
+ output q_bar;
+
+ always@(posedge clk) begin // for synchronous reset
+   if(!reset)       q <= 0;
+   else 
+ begin
+     case({s,r})       
+        2'b00: q <= q;     // No change
+       2'b01: q <= 1'b0;  // Write logic for reset
+       2'b10: q <= 1'b1;  // Write logic for set
+       2'b11:	q <= 1'bx;	// Write logic for Invalid state                      
+     endcase
+   end
+ end
+ assign q_bar = ~q;
+endmodule
+```
 
 **RTL LOGIC FOR FLIPFLOPS**
+![image](https://github.com/SRINIDHISENTHILNATHAN/SR-FLIPFLOP-USING-CASE-EXP6/assets/121373170/64931eda-8e7b-471b-bbfe-99d9327461d4)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![image](https://github.com/SRINIDHISENTHILNATHAN/SR-FLIPFLOP-USING-CASE-EXP6/assets/121373170/ae75a6fe-3f87-4dd6-b01f-7fc8fad7e119)
+
 
 **RESULTS**
+Hence, SR flipflop using verilog and validating their functionality using their functional tables is implemented.
